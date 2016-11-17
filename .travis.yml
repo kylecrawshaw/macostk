@@ -1,0 +1,16 @@
+language: python
+python: 3.5
+env:
+- TOXENV=py27
+install: pip install -U tox
+script: tox -e ${TOXENV}
+deploy:
+  provider: pypi
+  distributions: sdist bdist_wheel
+  user: kylecrawshaw
+  password:
+    secure: eQ6/ab2pMTfSjaLUqlzyGHDnynkzWLwcOP15tCbQy+s38PNY/h4i7Ake1hdznHwaLieLQwYxNb4QzbUA4cDB0wyl4WIVYldsO3XjZyjSBxRCPJuerFA3/FVqdVZwErdZ9LzjZ5IXo0BMER41OJrTt5AjFywnG+5HIUQIN3tbBZ6OA+0z55cx692KsXWmte+ueW0gs3hsHZQe4uwWx4xT8cp04aD4r83zGie3AwVykeL+dm1u0+v1vdZE4zMVUbKRgk5EOFXZLigMKazCakJ5AJvC5gbDoAc43qqU84AiC5iv918PvHGk0WrplEeFRvJvVgf4WbAK1akugBRAIsFa6tPgimV69JyQVGTPcQVoJeSrsBdQwYHu37QWMdnhBQ8rDXS7aYdPd+G3RJU4nFd4Rxe7LiMM+Yy+TSR1QBQvh8J1z8VsO/syqH22/h+XYZZM8qP76wsO3dTOnkcyz6SaLCoHkUarBlU0kjRAO3wsheyciOK3U0+sUYtooCDQmhSpV4MS6GpcdVIm27ohCqj7SxJllLYGqv/U7Nn3N54bvoZLI0m8mlRZxwvsoVfNCbJpF6hfGhYaqfcg20oNgkmZQYW5GFe4O+gY/yKsvlu9q91PNBO1ZRcMRErW6SjpVAlge1gqzEz8horR7dCcDMW4MTqp1Z1tNGxgiHFcV0a/rr0=
+  on:
+    tags: true
+    repo: kylecrawshaw/macostk
+    condition: "$TOXENV == py27"
